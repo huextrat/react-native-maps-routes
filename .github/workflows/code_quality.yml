@@ -1,0 +1,27 @@
+name: Code Quality
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint & Prettier ✏️
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/hydrogen'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn --freeze-lockfile
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Prettier
+        run: yarn format:check
