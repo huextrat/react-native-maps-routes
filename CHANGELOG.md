@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.1](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.0...v1.0.1) (2023-06-09)
+
 # 1.0.0 (2023-06-09)
 
 
