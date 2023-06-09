@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-import { LineCapType, LineJoinType, Polyline } from "react-native-maps";
+import { LatLng, LineCapType, LineJoinType, Polyline } from "react-native-maps";
 import type { GooglePolylineRoute } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 
 type Props = {
-  origin: {
-    latitude: number;
-    longitude: number;
-  };
-  destination: {
-    latitude: number;
-    longitude: number;
-  };
+  origin: LatLng;
+  destination: LatLng;
   apiKey: string;
   strokeColor?: string;
   strokeWidth?: number;
   onStart?: (route: { origin: string; destination: string }) => void;
-  onReady?: (coordinates: { latitude: number; longitude: number }[]) => void;
+  onReady?: (coordinates: LatLng[]) => void;
   onError?: (error: any) => void;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
@@ -25,9 +19,7 @@ type Props = {
 };
 
 export const MapViewRoute: React.FC<Props> = (props) => {
-  const [coordinates, setCoordinates] = useState<
-    { latitude: number; longitude: number }[]
-  >([]);
+  const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
   useEffect(() => {
     fetchRoute();
@@ -50,18 +42,12 @@ export const MapViewRoute: React.FC<Props> = (props) => {
       body: JSON.stringify({
         origin: {
           location: {
-            latLng: {
-              latitude: props.origin.latitude,
-              longitude: props.origin.longitude,
-            },
+            latLng: props.origin,
           },
         },
         destination: {
           location: {
-            latLng: {
-              latitude: props.destination.latitude,
-              longitude: props.destination.longitude,
-            },
+            latLng: props.destination,
           },
         },
         travelMode: props.mode || "WALK",
