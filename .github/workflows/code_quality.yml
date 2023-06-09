@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/hydrogen'
-          cache: yarn
 
       - name: Install dependencies
         run: yarn
