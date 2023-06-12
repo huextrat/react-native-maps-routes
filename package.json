@@ -46,7 +46,7 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@types/jest": "29.5.2",
-    "@types/node": "20.2.5",
+    "@types/node": "20.3.0",
     "@types/react": "18.2.12",
     "@typescript-eslint/eslint-plugin": "5.59.11",
     "@typescript-eslint/parser": "5.59.11",
@@ -58,6 +58,6 @@
     "react": "18.2.0",
     "react-native-maps": "1.7.1",
     "semantic-release": "21.0.5",
-    "typescript": "5.0.4"
+    "typescript": "5.1.3"
   }
 }
