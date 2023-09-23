@@ -57,7 +57,7 @@
     "prettier": "3.0.3",
     "react": "18.2.0",
     "react-native-maps": "1.7.1",
-    "semantic-release": "22.0.1",
+    "semantic-release": "22.0.4",
     "typescript": "5.2.2"
   }
 }
