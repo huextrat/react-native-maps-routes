@@ -46,7 +46,7 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@types/jest": "29.5.11",
-    "@types/node": "20.10.4",
+    "@types/node": "20.10.5",
     "@types/react": "18.2.45",
     "@typescript-eslint/eslint-plugin": "6.14.0",
     "@typescript-eslint/parser": "6.14.0",
