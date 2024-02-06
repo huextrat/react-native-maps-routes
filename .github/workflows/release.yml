@@ -22,7 +22,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/hydrogen'
+          node-version: 'lts/iron'
           cache: 'yarn'
           cache-dependency-path: '**/yarn.lock'
 

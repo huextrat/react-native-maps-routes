@@ -31,7 +31,7 @@
     "lint:fix": "eslint --fix ./src",
     "format": "prettier --write ./src",
     "format:check": "prettier --check --cache ./src",
-    "prepare": "husky install",
+    "prepare": "husky",
     "build": "tsc",
     "release": "semantic-release"
   },
@@ -53,11 +53,11 @@
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-react": "7.33.2",
-    "husky": "8.0.3",
+    "husky": "9.0.10",
     "prettier": "3.2.5",
     "react": "18.2.0",
     "react-native-maps": "1.10.1",
-    "semantic-release": "22.0.12",
+    "semantic-release": "23.0.0",
     "typescript": "5.3.3"
   }
 }
