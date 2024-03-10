@@ -56,7 +56,7 @@
     "husky": "9.0.11",
     "prettier": "3.2.5",
     "react": "18.2.0",
-    "react-native-maps": "1.10.3",
+    "react-native-maps": "1.11.1",
     "semantic-release": "23.0.2",
     "typescript": "5.4.2"
   }
