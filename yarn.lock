@@ -4203,10 +4203,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-native-maps@1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.13.0.tgz#ea8da66c479c0a75ce41fc2a894927374b60701e"
-  integrity sha512-NC5gD3/F2t/0uw/PrKrJKO/1fdBWcaYYEeH/M6IyrhRwyKRgSG/WV/3sN+7Yy6ID8n1jl/EbESduIV4kMJ6kWg==
+react-native-maps@1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.13.2.tgz#3dfb3e18b0e77362b8939f11148da629e5bf1d04"
+  integrity sha512-7t2zEqS6VYGdNaZHt08nNJxH2YzYAv0gLNf/RbapD3vCYaLYF+sYV0COkQ5YYEEwqJb5I9OViwXuU9GkJXlVmw==
   dependencies:
     "@types/geojson" "^7946.0.13"
 
