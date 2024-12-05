@@ -47,7 +47,7 @@
     "@semantic-release/git": "10.0.1",
     "@types/jest": "29.5.14",
     "@types/node": "20.17.9",
-    "@types/react": "18.3.13",
+    "@types/react": "18.3.14",
     "@typescript-eslint/eslint-plugin": "8.17.0",
     "@typescript-eslint/parser": "8.17.0",
     "eslint": "8.57.1",
