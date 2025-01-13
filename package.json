@@ -52,7 +52,7 @@
     "@typescript-eslint/parser": "8.19.1",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-react": "7.37.3",
+    "eslint-plugin-react": "7.37.4",
     "husky": "9.1.7",
     "prettier": "3.4.2",
     "react": "18.3.1",
