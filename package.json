@@ -27,10 +27,8 @@
     "dist"
   ],
   "scripts": {
-    "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src",
-    "format": "prettier --write ./src",
-    "format:check": "prettier --check --cache ./src",
+    "lint": "npx biome check ./src && npx biome format ./src",
+    "lint:fix": "npx biome lint --write ./src && npx biome format --write ./src && npx biome check --write ./src",
     "prepare": "husky",
     "build": "tsc",
     "release": "semantic-release"
@@ -41,23 +39,18 @@
     "react-native-maps": ">=1.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@types/jest": "29.5.14",
     "@types/node": "22.13.8",
     "@types/react": "19.0.10",
-    "@typescript-eslint/eslint-plugin": "8.25.0",
-    "@typescript-eslint/parser": "8.25.0",
-    "eslint": "8.57.1",
-    "eslint-config-prettier": "10.0.2",
-    "eslint-plugin-react": "7.37.4",
     "husky": "9.1.7",
-    "prettier": "3.5.2",
     "react": "19.0.0",
     "react-native-maps": "1.20.1",
     "semantic-release": "24.2.3",
     "typescript": "5.8.2"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
