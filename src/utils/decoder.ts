@@ -5,12 +5,12 @@ export const decodeRoutesPolyline = (route: GooglePolylineRoute) => {
   const encoded = route.polyline.encodedPolyline;
   let index = 0;
   const len = encoded.length;
-  let lat = 0,
-    lng = 0;
+  let lat = 0;
+  let lng = 0;
   while (index < len) {
-    let b,
-      shift = 0,
-      result = 0;
+    let b: number;
+    let shift = 0;
+    let result = 0;
     do {
       b = encoded.charAt(index++).charCodeAt(0) - 63;
       result |= (b & 0x1f) << shift;

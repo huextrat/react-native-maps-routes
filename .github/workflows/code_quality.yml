@@ -5,24 +5,14 @@ on:
 
 jobs:
   lint:
-    name: Lint & Prettier ✏️
+    name: Biome ✏️
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/iron'
-          cache: 'yarn'
-          cache-dependency-path: '**/yarn.lock'
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: Install dependencies
-        run: yarn --immutable
-
-      - name: Lint
+      - name: Biome check
         run: yarn lint
-
-      - name: Prettier
-        run: yarn format:check

@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react";
+import { useEffect, useState } from "react";
 
-import { LatLng, LineCapType, LineJoinType, Polyline } from "react-native-maps";
+import {
+  type LatLng,
+  type LineCapType,
+  type LineJoinType,
+  Polyline,
+} from "react-native-maps";
 import type { GooglePolylineRoute } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 
@@ -12,7 +19,7 @@ type Props = {
   strokeWidth?: number;
   onStart?: (route: { origin: string; destination: string }) => void;
   onReady?: (coordinates: LatLng[]) => void;
-  onError?: (error: any) => void;
+  onError?: (error: Error) => void;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -21,10 +28,12 @@ type Props = {
 export const MapViewRoute: React.FC<Props> = (props) => {
   const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetchRoute();
   }, [props.origin, props.destination]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (coordinates.length) {
       props.onReady?.(coordinates);
@@ -53,15 +62,15 @@ export const MapViewRoute: React.FC<Props> = (props) => {
         travelMode: props.mode || "WALK",
       }),
     })
-      .then((response: any) => response.json())
-      .then((json: any) => {
+      .then((response: Response) => response.json())
+      .then((json: { routes: GooglePolylineRoute[]; error: Error }) => {
         if (json.error) {
           throw json.error;
         }
         const route = json.routes[0] as GooglePolylineRoute;
         setCoordinates(decodeRoutesPolyline(route));
       })
-      .catch((error: any) => {
+      .catch((error) => {
         props.onError?.(error);
       });
   };
