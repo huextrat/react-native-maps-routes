@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.3...v1.0.4) (2025-03-01)
+
+
+### Bug Fixes
+
+* align dx with other libs ([#514](https://github.com/huextrat/react-native-maps-routes/issues/514)) ([047b89c](https://github.com/huextrat/react-native-maps-routes/commit/047b89c22147491ff24085ab45103e58cf9f35e6))
+
 ## [1.0.3](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.2...v1.0.3) (2023-06-09)
 
 
