@@ -26,7 +26,7 @@ Import `MapViewRoute` and render it as a child of a `MapView` component. The man
 - `apiKey`: Your Google Maps Routes API Key _(request one [here](https://developers.google.com/maps/documentation/routes/get-api-key); if you're using an existing Google Maps API Key make sure you've enabled the Google Maps Routes API for that key using the [Google API Console](https://console.developers.google.com/apis/))_.
 
 ```js
-import MapViewRoute from 'react-native-maps-routes';
+import {MapViewRoute} from 'react-native-maps-routes';
 
 const origin = { latitude: 37.332280, longitude: -122.010980 };
 const destination = { latitude: 37.423199, longitude: -122.084068 };
