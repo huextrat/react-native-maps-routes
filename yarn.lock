@@ -4042,7 +4042,7 @@ __metadata:
     "@types/react": "npm:19.1.2"
     husky: "npm:9.1.7"
     react: "npm:19.1.0"
-    react-native-maps: "npm:1.21.0"
+    react-native-maps: "npm:1.22.0"
     semantic-release: "npm:24.2.3"
     typescript: "npm:5.8.3"
   peerDependencies:
@@ -4052,9 +4052,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-native-maps@npm:1.21.0":
-  version: 1.21.0
-  resolution: "react-native-maps@npm:1.21.0"
+"react-native-maps@npm:1.22.0":
+  version: 1.22.0
+  resolution: "react-native-maps@npm:1.22.0"
   dependencies:
     "@types/geojson": "npm:^7946.0.13"
   peerDependencies:
@@ -4064,7 +4064,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: 10/56b40b3cf157b0dd1f34d158d93099a4e456c0a922cff29ff74e51413a9895ec36d99a6fc0db7dd1ba06b169ed7ea3d3eea8d68c1c4ed06b52a4f6d369b86bb6
+  checksum: 10/581d717e4d06d5d0fe08a32c5db6987c52bcc3496805a75f779c3a1d17f5392d29d139174f4651e83fc9b2c49ff5e33cf355a79c8dff1fd9c21bdc1d960a2d99
   languageName: node
   linkType: hard
 
