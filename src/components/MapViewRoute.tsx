@@ -23,7 +23,7 @@ type Props = {
   onReady?: (coordinates: LatLng[]) => void;
   onError?: (error: Error) => void;
   onEstimatedTime?: (time: number) => void;
-  enableEstimatedTime?: boolean | false;
+  enableEstimatedTime?: boolean;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
