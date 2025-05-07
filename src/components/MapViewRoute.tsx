@@ -79,10 +79,7 @@ export const MapViewRoute: React.FC<Props> = (props) => {
         if (props.enableEstimatedTime) {
           const durationString = route.duration ?? "0s";
           const formattedTime = formatDuration(durationString);
-
-          if (props.onEstimatedTime && props.onEstimatedTime) {
-            props.onEstimatedTime?.(formattedTime);
-          }
+          props.onEstimatedTime?.(formattedTime);
         }
       })
       .catch((error) => {

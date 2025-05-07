@@ -71,4 +71,4 @@ type LatLng {
 | `onStart`  | `{ origin: string; destination: string }` | Callback that is called when the routing has started.              |
 | `onReady`  | `LatLng[]`                                | Callback that is called when the routing has succesfully finished. |
 | `onError`  | `any`                                     | Callback that is called in case the routing has failed.            |
-| `onEstimatedTime`  | `milliseconds`                          | Callback called with estimated time (ETA) as a milliseconds if enabled.  |
+| `onEstimatedTime`  | `number`                          | Callback called with estimated time (ETA) as a milliseconds if enabled.  |
