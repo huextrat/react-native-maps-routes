@@ -10,6 +10,7 @@ import {
 } from "react-native-maps";
 import type { GooglePolylineRoute } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
+import { formatDuration } from "../utils/formatDuration";
 
 type Props = {
   origin: LatLng;
@@ -20,6 +21,8 @@ type Props = {
   onStart?: (route: { origin: string; destination: string }) => void;
   onReady?: (coordinates: LatLng[]) => void;
   onError?: (error: Error) => void;
+  onEstimatedTime?: (time: string) => void;
+  enableEstimatedTime?: boolean;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -46,7 +49,9 @@ export const MapViewRoute: React.FC<Props> = (props) => {
       headers: {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": props.apiKey,
-        "X-Goog-FieldMask": "routes.polyline.encodedPolyline",
+        "X-Goog-FieldMask": props.enableEstimatedTime
+          ? "routes.polyline.encodedPolyline,routes.duration"
+          : "routes.polyline.encodedPolyline",
       },
       body: JSON.stringify({
         origin: {
@@ -69,6 +74,15 @@ export const MapViewRoute: React.FC<Props> = (props) => {
         }
         const route = json.routes[0] as GooglePolylineRoute;
         setCoordinates(decodeRoutesPolyline(route));
+
+        if (props.enableEstimatedTime) {
+          const durationString = route.duration ?? "0s";
+          const formattedTime = formatDuration(durationString);
+
+          if (props.onEstimatedTime) {
+            props.onEstimatedTime(formattedTime);
+          }
+        }
       })
       .catch((error) => {
         props.onError?.(error);
