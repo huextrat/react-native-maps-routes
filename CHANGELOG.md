@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.1.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.4...v1.1.0) (2025-05-07)
+
+
+### Bug Fixes
+
+* build ([519cd1c](https://github.com/huextrat/react-native-maps-routes/commit/519cd1ccd6faae8ed3ae79cc637b66023026d4c0))
+
+
+### Features
+
+* add estimatedTime support for destination ([#556](https://github.com/huextrat/react-native-maps-routes/issues/556)) ([e865d94](https://github.com/huextrat/react-native-maps-routes/commit/e865d94b217374db68deb68d7878b714d1cb9b32))
+
 ## [1.0.4](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.3...v1.0.4) (2025-03-01)
 
 
