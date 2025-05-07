@@ -11,6 +11,7 @@ import {
 import type { GooglePolylineRoute } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 import { formatDuration } from "../utils/formatDuration";
+import { generateFieldMask } from "../utils/generateFieldMask";
 
 type Props = {
   origin: LatLng;
@@ -21,8 +22,8 @@ type Props = {
   onStart?: (route: { origin: string; destination: string }) => void;
   onReady?: (coordinates: LatLng[]) => void;
   onError?: (error: Error) => void;
-  onEstimatedTime?: (time: string) => void;
-  enableEstimatedTime?: boolean;
+  onEstimatedTime?: (time: number) => void;
+  enableEstimatedTime?: boolean | false;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -49,9 +50,9 @@ export const MapViewRoute: React.FC<Props> = (props) => {
       headers: {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": props.apiKey,
-        "X-Goog-FieldMask": props.enableEstimatedTime
-          ? "routes.polyline.encodedPolyline,routes.duration"
-          : "routes.polyline.encodedPolyline",
+        "X-Goog-FieldMask": generateFieldMask({
+          enableEstimatedTime: props.enableEstimatedTime,
+        }),
       },
       body: JSON.stringify({
         origin: {
@@ -79,8 +80,8 @@ export const MapViewRoute: React.FC<Props> = (props) => {
           const durationString = route.duration ?? "0s";
           const formattedTime = formatDuration(durationString);
 
-          if (props.onEstimatedTime) {
-            props.onEstimatedTime(formattedTime);
+          if (props.onEstimatedTime && props.onEstimatedTime) {
+            props.onEstimatedTime?.(formattedTime);
           }
         }
       })

@@ -1,9 +1,15 @@
-export const formatDuration = (durationString: string): string => {
-  const duration = Number.parseInt(durationString.replace("s", ""), 10);
-  if (Number.isNaN(duration) || duration <= 0) {
-    return "Invalid duration";
+export const formatDuration = (
+  durationString: string | null | undefined,
+): number => {
+  if (!durationString || typeof durationString !== "string") {
+    return 0;
   }
-  const hours = Math.floor(duration / 3600);
-  const minutes = Math.ceil((duration % 3600) / 60);
-  return hours > 0 ? `${hours} hr ${minutes} min` : `${minutes} min`;
+  const durationInSeconds = Number.parseInt(
+    durationString.replace(/s$/, ""),
+    10,
+  );
+  if (Number.isNaN(durationInSeconds) || durationInSeconds <= 0) {
+    return 0;
+  }
+  return durationInSeconds * 1000;
 };
