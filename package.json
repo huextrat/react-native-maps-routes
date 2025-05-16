@@ -52,7 +52,7 @@
     "husky": "9.1.7",
     "react": "19.0.0",
     "react-native-maps": "1.23.8",
-    "semantic-release": "24.2.3",
+    "semantic-release": "24.2.4",
     "typescript": "5.8.3"
   },
   "packageManager": "yarn@4.9.1"
