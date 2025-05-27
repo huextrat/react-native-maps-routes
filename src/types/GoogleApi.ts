@@ -3,4 +3,5 @@ export type GooglePolylineRoute = {
     encodedPolyline: string;
   };
   duration?: string;
+  distanceMeters?: number;
 };

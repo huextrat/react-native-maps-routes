@@ -24,6 +24,8 @@ type Props = {
   onError?: (error: Error) => void;
   onEstimatedTime?: (time: number) => void;
   enableEstimatedTime?: boolean;
+  onDistance?: (distance: number) => void;
+  enableDistance?: boolean;
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -52,6 +54,7 @@ export const MapViewRoute: React.FC<Props> = (props) => {
         "X-Goog-Api-Key": props.apiKey,
         "X-Goog-FieldMask": generateFieldMask({
           enableEstimatedTime: props.enableEstimatedTime,
+          enableDistance: props.enableDistance,
         }),
       },
       body: JSON.stringify({
@@ -80,6 +83,11 @@ export const MapViewRoute: React.FC<Props> = (props) => {
           const durationString = route.duration ?? "0s";
           const formattedTime = formatDuration(durationString);
           props.onEstimatedTime?.(formattedTime);
+        }
+
+        if (props.enableDistance) {
+          const distance = route.distanceMeters ?? 0;
+          props.onDistance?.(distance);
         }
       })
       .catch((error) => {
