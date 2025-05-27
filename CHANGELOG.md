@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.2.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.1.0...v1.2.0) (2025-05-27)
+
+
+### Features
+
+* add the distance to of the route ([#570](https://github.com/huextrat/react-native-maps-routes/issues/570)) ([440efe0](https://github.com/huextrat/react-native-maps-routes/commit/440efe05e6b1fa64956b66eab0fef81cf04fbae2))
+
 # [1.1.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.0.4...v1.1.0) (2025-05-07)
 
 
