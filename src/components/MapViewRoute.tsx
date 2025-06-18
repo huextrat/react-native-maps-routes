@@ -1,7 +1,5 @@
-// biome-ignore lint/style/useImportType: <explanation>
-import React from "react";
-import { useEffect, useState } from "react";
-
+// biome-ignore lint/style/useImportType: <to comment>
+import React, { useEffect, useState } from "react";
 import {
   type LatLng,
   type LineCapType,
@@ -34,12 +32,12 @@ type Props = {
 export const MapViewRoute: React.FC<Props> = (props) => {
   const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
     fetchRoute();
   }, [props.origin, props.destination]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
     if (coordinates.length) {
       props.onReady?.(coordinates);
