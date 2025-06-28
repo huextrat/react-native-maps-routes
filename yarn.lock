@@ -1691,12 +1691,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.15.33":
-  version: 22.15.33
-  resolution: "@types/node@npm:22.15.33"
+"@types/node@npm:22.15.34":
+  version: 22.15.34
+  resolution: "@types/node@npm:22.15.34"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10/5734cbca7fc363f3d6ad191e1be645cc9885d642e9f90688892459f10629cf663d2206e7ed7b255dd476baaa86fb011aa09647e77520958b5993b391f793856f
+  checksum: 10/b0fb6674f6c17e3d515531d7f787ccd6676641ba161a6a0e6a93a2d5bc2089fde492eac24b5152a11413bf07a818055a9ec9077d3200b03cf7ea9718470a8417
   languageName: node
   linkType: hard
 
@@ -6070,7 +6070,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:19.8.1"
     "@semantic-release/changelog": "npm:6.0.3"
     "@semantic-release/git": "npm:10.0.1"
-    "@types/node": "npm:22.15.33"
+    "@types/node": "npm:22.15.34"
     "@types/react": "npm:19.0.0"
     husky: "npm:9.1.7"
     react: "npm:19.0.0"
