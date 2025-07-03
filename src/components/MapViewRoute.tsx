@@ -36,6 +36,7 @@ type Props = {
   mode?: TravelMode;
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
+  waypoints?: LatLng[];
 };
 
 export const MapViewRoute: React.FC<Props> = ({
