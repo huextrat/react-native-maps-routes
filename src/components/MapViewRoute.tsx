@@ -14,6 +14,7 @@ import { generateFieldMask } from "../utils/generateFieldMask";
 type Props = {
   origin: LatLng;
   destination: LatLng;
+  waypoints?: LatLng[];
   apiKey: string;
   strokeColor?: string;
   strokeWidth?: number;
@@ -27,7 +28,6 @@ type Props = {
   mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
-  waypoints?: LatLng[];
 };
 
 export const MapViewRoute: React.FC<Props> = (props) => {
@@ -67,7 +67,6 @@ export const MapViewRoute: React.FC<Props> = (props) => {
             latLng: props.destination,
           },
         },
-        // Add intermediates if waypoints are provided
         ...(props?.waypoints?.length > 0
           ? {
               intermediates: props.waypoints.map((latLng) => ({
