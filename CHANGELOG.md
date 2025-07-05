@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.3.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.2.2...v1.3.0) (2025-07-05)
+
+
+### Features
+
+* add waypoints (intermediates) support ([#595](https://github.com/huextrat/react-native-maps-routes/issues/595)) ([4804014](https://github.com/huextrat/react-native-maps-routes/commit/4804014b178d11232b8810cb2265e0c00fe8a5af))
+
 ## [1.2.2](https://github.com/huextrat/react-native-maps-routes/compare/v1.2.1...v1.2.2) (2025-06-30)
 
 
