@@ -6,10 +6,19 @@ import {
   type LineJoinType,
   Polyline,
 } from "react-native-maps";
+import type { TravelMode } from "src/types/TravelMode";
 import type { GooglePolylineRoute } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 import { formatDuration } from "../utils/formatDuration";
 import { generateFieldMask } from "../utils/generateFieldMask";
+
+const DEFAULT_STROKE_COLOR = "#000";
+const DEFAULT_STROKE_WIDTH = 6;
+const DEFAULT_LINE_JOIN: LineJoinType = "round";
+const DEFAULT_LINE_CAP: LineCapType = "round";
+const DEFAULT_TRAVEL_MODE: TravelMode = "WALK";
+const API_ENDPOINT =
+  "https://routes.googleapis.com/directions/v2:computeRoutes";
 
 type Props = {
   origin: LatLng;
@@ -18,63 +27,78 @@ type Props = {
   apiKey: string;
   strokeColor?: string;
   strokeWidth?: number;
-  onStart?: (route: { origin: string; destination: string }) => void;
   onReady?: (coordinates: LatLng[]) => void;
   onError?: (error: Error) => void;
   onEstimatedTime?: (time: number) => void;
   enableEstimatedTime?: boolean;
   onDistance?: (distance: number) => void;
   enableDistance?: boolean;
-  mode?: "DRIVE" | "BICYCLE" | "TWO_WHEELER" | "WALK";
+  mode?: TravelMode;
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
 };
 
-export const MapViewRoute: React.FC<Props> = (props) => {
+export const MapViewRoute: React.FC<Props> = ({
+  origin,
+  destination,
+  waypoints = [],
+  apiKey,
+  strokeColor = DEFAULT_STROKE_COLOR,
+  strokeWidth = DEFAULT_STROKE_WIDTH,
+  onReady,
+  onError,
+  onEstimatedTime,
+  enableEstimatedTime = false,
+  onDistance,
+  enableDistance = false,
+  mode = DEFAULT_TRAVEL_MODE,
+  lineJoin = DEFAULT_LINE_JOIN,
+  lineCap = DEFAULT_LINE_CAP,
+}) => {
   const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
     fetchRoute();
-  }, [props.origin, props.destination]);
+  }, [origin, destination]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
     if (coordinates.length) {
-      props.onReady?.(coordinates);
+      onReady?.(coordinates);
     }
   }, [coordinates]);
 
   const fetchRoute = () => {
-    fetch("https://routes.googleapis.com/directions/v2:computeRoutes", {
+    fetch(API_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Goog-Api-Key": props.apiKey,
+        "X-Goog-Api-Key": apiKey,
         "X-Goog-FieldMask": generateFieldMask({
-          enableEstimatedTime: props.enableEstimatedTime,
-          enableDistance: props.enableDistance,
+          enableEstimatedTime: enableEstimatedTime,
+          enableDistance: enableDistance,
         }),
       },
       body: JSON.stringify({
         origin: {
           location: {
-            latLng: props.origin,
+            latLng: origin,
           },
         },
         destination: {
           location: {
-            latLng: props.destination,
+            latLng: destination,
           },
         },
-        ...(props?.waypoints?.length > 0
+        ...(waypoints?.length > 0
           ? {
-              intermediates: props.waypoints.map((latLng) => ({
+              intermediates: waypoints.map((latLng) => ({
                 location: { latLng },
               })),
             }
           : {}),
-        travelMode: props.mode || "WALK",
+        travelMode: mode,
       }),
     })
       .then((response: Response) => response.json())
@@ -85,29 +109,29 @@ export const MapViewRoute: React.FC<Props> = (props) => {
         const route = json.routes[0] as GooglePolylineRoute;
         setCoordinates(decodeRoutesPolyline(route));
 
-        if (props.enableEstimatedTime) {
+        if (enableEstimatedTime) {
           const durationString = route.duration ?? "0s";
           const formattedTime = formatDuration(durationString);
-          props.onEstimatedTime?.(formattedTime);
+          onEstimatedTime?.(formattedTime);
         }
 
-        if (props.enableDistance) {
+        if (enableDistance) {
           const distance = route.distanceMeters ?? 0;
-          props.onDistance?.(distance);
+          onDistance?.(distance);
         }
       })
       .catch((error) => {
-        props.onError?.(error);
+        onError?.(error);
       });
   };
 
   return (
     <Polyline
       coordinates={coordinates}
-      strokeColor={props.strokeColor ?? "#000"}
-      strokeWidth={props.strokeWidth ?? 6}
-      lineJoin={props.lineJoin ?? "round"}
-      lineCap={props.lineCap ?? "round"}
+      strokeColor={strokeColor}
+      strokeWidth={strokeWidth}
+      lineJoin={lineJoin}
+      lineCap={lineCap}
     />
   );
 };
