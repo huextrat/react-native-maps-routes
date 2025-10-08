@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/huextrat/react-native-maps-routes/compare/v1.3.4...v1.3.5) (2025-10-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-native to v0.82.0 ([#663](https://github.com/huextrat/react-native-maps-routes/issues/663)) ([bae9936](https://github.com/huextrat/react-native-maps-routes/commit/bae993667a9a21d47486beda80b74426f20df282))
+
 ## [1.3.4](https://github.com/huextrat/react-native-maps-routes/compare/v1.3.3...v1.3.4) (2025-09-12)
 
 
