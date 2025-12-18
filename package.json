@@ -34,7 +34,7 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "react-native": "0.83.0"
+    "react-native": "0.83.1"
   },
   "peerDependencies": {
     "react": "*",
