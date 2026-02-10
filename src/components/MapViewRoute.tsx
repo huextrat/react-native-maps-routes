@@ -8,10 +8,12 @@ import {
 } from "react-native-maps";
 import type { TravelMode } from "src/types/TravelMode";
 import type {
+  ComputeRoutesRequestBody,
   GooglePolylineRoute,
   GoogleRouteLeg,
   LegField,
   LegStepField,
+  RouteModifiers,
 } from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 import { formatDuration } from "../utils/formatDuration";
@@ -24,6 +26,28 @@ const DEFAULT_LINE_CAP: LineCapType = "round";
 const DEFAULT_TRAVEL_MODE: TravelMode = "WALK";
 const API_ENDPOINT =
   "https://routes.googleapis.com/directions/v2:computeRoutes";
+
+function buildRequestBody(
+  origin: LatLng,
+  destination: LatLng,
+  waypoints: LatLng[],
+  mode: TravelMode,
+  routeModifiers?: RouteModifiers,
+  requestBodyOverrides?: Partial<ComputeRoutesRequestBody> &
+    Record<string, unknown>,
+): Record<string, unknown> {
+  return {
+    origin: { location: { latLng: origin } },
+    destination: { location: { latLng: destination } },
+    ...(waypoints.length > 0 && {
+      intermediates: waypoints.map((latLng) => ({ location: { latLng } })),
+    }),
+    travelMode: mode,
+    ...(routeModifiers &&
+      Object.keys(routeModifiers).length > 0 && { routeModifiers }),
+    ...requestBodyOverrides,
+  };
+}
 
 type Props = {
   origin: LatLng;
@@ -44,6 +68,18 @@ type Props = {
   mode?: TravelMode;
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
+  /**
+   * Route modifiers (e.g. avoidTolls, avoidHighways). Typed for discoverability.
+   * @see https://developers.google.com/maps/documentation/routes/reference/rest/v2/RouteModifiers
+   */
+  routeModifiers?: RouteModifiers;
+  /**
+   * Override or add any field to the request body sent to Google Routes API.
+   * Applied after built-in fields (origin, destination, travelMode, routeModifiers).
+   * @see https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes
+   */
+  requestBodyOverrides?: Partial<ComputeRoutesRequestBody> &
+    Record<string, unknown>;
 };
 
 export const MapViewRoute: React.FC<Props> = ({
@@ -65,13 +101,22 @@ export const MapViewRoute: React.FC<Props> = ({
   mode = DEFAULT_TRAVEL_MODE,
   lineJoin = DEFAULT_LINE_JOIN,
   lineCap = DEFAULT_LINE_CAP,
+  routeModifiers,
+  requestBodyOverrides,
 }) => {
   const [coordinates, setCoordinates] = useState<LatLng[]>([]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
     fetchRoute();
-  }, [origin, destination]);
+  }, [
+    origin,
+    destination,
+    waypoints,
+    mode,
+    routeModifiers,
+    requestBodyOverrides,
+  ]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <to comment>
   useEffect(() => {
@@ -93,26 +138,16 @@ export const MapViewRoute: React.FC<Props> = ({
           legStepFields: legStepFields,
         }),
       },
-      body: JSON.stringify({
-        origin: {
-          location: {
-            latLng: origin,
-          },
-        },
-        destination: {
-          location: {
-            latLng: destination,
-          },
-        },
-        ...(waypoints?.length > 0
-          ? {
-              intermediates: waypoints.map((latLng) => ({
-                location: { latLng },
-              })),
-            }
-          : {}),
-        travelMode: mode,
-      }),
+      body: JSON.stringify(
+        buildRequestBody(
+          origin,
+          destination,
+          waypoints,
+          mode,
+          routeModifiers,
+          requestBodyOverrides,
+        ),
+      ),
     })
       .then((response: Response) => response.json())
       .then((json: { routes: GooglePolylineRoute[]; error: Error }) => {
