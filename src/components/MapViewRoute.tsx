@@ -7,7 +7,12 @@ import {
   Polyline,
 } from "react-native-maps";
 import type { TravelMode } from "src/types/TravelMode";
-import type { GooglePolylineRoute } from "../types/GoogleApi";
+import type {
+  GooglePolylineRoute,
+  GoogleRouteLeg,
+  LegField,
+  LegStepField,
+} from "../types/GoogleApi";
 import { decodeRoutesPolyline } from "../utils/decoder";
 import { formatDuration } from "../utils/formatDuration";
 import { generateFieldMask } from "../utils/generateFieldMask";
@@ -33,8 +38,9 @@ type Props = {
   enableEstimatedTime?: boolean;
   onDistance?: (distance: number) => void;
   enableDistance?: boolean;
-  onLegs?: (legs: { distanceMeters: number; duration: string }[]) => void;
-  enableLegs?: boolean;
+  onLegs?: (legs: GoogleRouteLeg[]) => void;
+  legFields?: LegField[];
+  legStepFields?: LegStepField[];
   mode?: TravelMode;
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -54,7 +60,8 @@ export const MapViewRoute: React.FC<Props> = ({
   onDistance,
   enableDistance = false,
   onLegs,
-  enableLegs = false,
+  legFields,
+  legStepFields,
   mode = DEFAULT_TRAVEL_MODE,
   lineJoin = DEFAULT_LINE_JOIN,
   lineCap = DEFAULT_LINE_CAP,
@@ -82,7 +89,8 @@ export const MapViewRoute: React.FC<Props> = ({
         "X-Goog-FieldMask": generateFieldMask({
           enableEstimatedTime: enableEstimatedTime,
           enableDistance: enableDistance,
-          enableLegs: enableLegs,
+          legFields: legFields,
+          legStepFields: legStepFields,
         }),
       },
       body: JSON.stringify({
@@ -125,7 +133,7 @@ export const MapViewRoute: React.FC<Props> = ({
           onDistance?.(distance);
         }
 
-        if (enableLegs && route.legs) {
+        if ((legFields?.length || legStepFields?.length) && route.legs) {
           onLegs?.(route.legs);
         }
       })
