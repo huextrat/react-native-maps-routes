@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.5.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.4.0...v1.5.0) (2026-02-10)
+
+
+### Features
+
+* adds route modifiers and request overrides ([#724](https://github.com/huextrat/react-native-maps-routes/issues/724)) ([9bc55e2](https://github.com/huextrat/react-native-maps-routes/commit/9bc55e2f023efab9426a9164b6442cc30a14b846))
+
 # [1.4.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.3.8...v1.4.0) (2026-02-10)
 
 
