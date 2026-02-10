@@ -1,4 +1,9 @@
-export type LegField = "distanceMeters" | "duration";
+export type LegField =
+  | "distanceMeters"
+  | "duration"
+  | "staticDuration"
+  | "startLocation"
+  | "endLocation";
 
 export type LegStepField =
   | "distanceMeters"
@@ -35,6 +40,19 @@ export type GoogleRouteStep = {
 export type GoogleRouteLeg = {
   distanceMeters?: number;
   duration?: string;
+  staticDuration?: string;
+  startLocation?: {
+    latLng: {
+      latitude: number;
+      longitude: number;
+    };
+  };
+  endLocation?: {
+    latLng: {
+      latitude: number;
+      longitude: number;
+    };
+  };
   steps?: GoogleRouteStep[];
 };
 
