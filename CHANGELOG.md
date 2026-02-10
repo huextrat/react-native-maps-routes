@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.4.0](https://github.com/huextrat/react-native-maps-routes/compare/v1.3.8...v1.4.0) (2026-02-10)
+
+
+### Features
+
+* add legs support ([#721](https://github.com/huextrat/react-native-maps-routes/issues/721)) ([d4b1310](https://github.com/huextrat/react-native-maps-routes/commit/d4b1310bc2eb6ef4b6c3a028792251dda4616dc9))
+
 ## [1.3.8](https://github.com/huextrat/react-native-maps-routes/compare/v1.3.7...v1.3.8) (2025-12-18)
 
 
