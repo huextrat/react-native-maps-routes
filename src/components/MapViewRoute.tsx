@@ -33,6 +33,8 @@ type Props = {
   enableEstimatedTime?: boolean;
   onDistance?: (distance: number) => void;
   enableDistance?: boolean;
+  onLegs?: (legs: { distanceMeters: number; duration: string }[]) => void;
+  enableLegs?: boolean;
   mode?: TravelMode;
   lineJoin?: LineJoinType;
   lineCap?: LineCapType;
@@ -51,6 +53,8 @@ export const MapViewRoute: React.FC<Props> = ({
   enableEstimatedTime = false,
   onDistance,
   enableDistance = false,
+  onLegs,
+  enableLegs = false,
   mode = DEFAULT_TRAVEL_MODE,
   lineJoin = DEFAULT_LINE_JOIN,
   lineCap = DEFAULT_LINE_CAP,
@@ -78,6 +82,7 @@ export const MapViewRoute: React.FC<Props> = ({
         "X-Goog-FieldMask": generateFieldMask({
           enableEstimatedTime: enableEstimatedTime,
           enableDistance: enableDistance,
+          enableLegs: enableLegs,
         }),
       },
       body: JSON.stringify({
@@ -118,6 +123,10 @@ export const MapViewRoute: React.FC<Props> = ({
         if (enableDistance) {
           const distance = route.distanceMeters ?? 0;
           onDistance?.(distance);
+        }
+
+        if (enableLegs && route.legs) {
+          onLegs?.(route.legs);
         }
       })
       .catch((error) => {
