@@ -33,6 +33,10 @@
     "build": "tsc",
     "release": "semantic-release"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "dependencies": {
     "react-native": "0.84.1"
   },
