@@ -55,7 +55,7 @@
     "@types/react": "19.0.0",
     "husky": "9.1.7",
     "react": "19.0.0",
-    "react-native-maps": "1.27.1",
+    "react-native-maps": "1.27.2",
     "semantic-release": "25.0.3",
     "typescript": "5.9.3"
   },
