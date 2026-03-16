@@ -37,9 +37,6 @@
     "access": "public",
     "provenance": true
   },
-  "dependencies": {
-    "react-native": "0.84.1"
-  },
   "peerDependencies": {
     "react": "*",
     "react-native": ">=0.64.3",
