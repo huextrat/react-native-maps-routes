@@ -54,7 +54,7 @@
     "react": "19.0.0",
     "react-native-maps": "1.27.2",
     "semantic-release": "25.0.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   },
   "packageManager": "yarn@4.13.0"
 }
