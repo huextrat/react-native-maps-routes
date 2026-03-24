@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": ".",
     "allowJs": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "declaration": true,
-    "esModuleInterop": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["ES6", "DOM"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": [
+      "ES6",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
@@ -21,8 +23,6 @@
     "outDir": "./dist",
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
-    "types": ["node"]
+    "target": "esnext"
   }
 }

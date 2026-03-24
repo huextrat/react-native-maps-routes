@@ -6,7 +6,6 @@ import {
   type LineJoinType,
   Polyline,
 } from "react-native-maps";
-import type { TravelMode } from "src/types/TravelMode";
 import type {
   ComputeRoutesRequestBody,
   GooglePolylineRoute,
@@ -15,6 +14,7 @@ import type {
   LegStepField,
   RouteModifiers,
 } from "../types/GoogleApi";
+import type { TravelMode } from "../types/TravelMode";
 import { decodeRoutesPolyline } from "../utils/decoder";
 import { formatDuration } from "../utils/formatDuration";
 import { generateFieldMask } from "../utils/generateFieldMask";
