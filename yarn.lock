@@ -3618,7 +3618,7 @@ __metadata:
     husky: "npm:9.1.7"
     react: "npm:19.0.0"
     react-native-maps: "npm:1.29.0"
-    semantic-release: "npm:25.0.6"
+    semantic-release: "npm:25.0.8"
     typescript: "npm:6.0.3"
   peerDependencies:
     react: "*"
@@ -3794,9 +3794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:25.0.6":
-  version: 25.0.6
-  resolution: "semantic-release@npm:25.0.6"
+"semantic-release@npm:25.0.8":
+  version: 25.0.8
+  resolution: "semantic-release@npm:25.0.8"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:^13.0.1"
     "@semantic-release/error": "npm:^4.0.0"
@@ -3828,7 +3828,7 @@ __metadata:
     yargs: "npm:^18.0.0"
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 10/972353b28c52020509edd9b42f5794eecffdf288b3f55e5f5ac02978f21e3a686b2b7f0a27fd831aa1fde44cf8ab0d014c6d99024e7d9abf71666d7d13e1ef35
+  checksum: 10/df6f5e800dee9a2379b60edc93393f1ee2003fba2037d938f4ccaeb17db3f1d2c864ee7d8b4d3dad7e0a13ea1ada028874cc4ebe585087f930bcb49027f85803
   languageName: node
   linkType: hard
 
